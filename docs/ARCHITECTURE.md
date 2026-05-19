@@ -24,7 +24,7 @@ The plate colorizer is the first core feature. It supports:
 - Zoom controls.
 - PNG export.
 
-This feature currently works as one large component, but it should be split before more features are added.
+This feature has been split into focused UI components and a custom hook. Future work should preserve this separation before adding larger experiment-design modules.
 
 ## Recommended File Structure
 
@@ -33,10 +33,12 @@ src/components/plate-colorizer/
   PlateColorizer.jsx
   ColorizerHeader.jsx
   BasicSettings.jsx
+  ColoringTools.jsx
   ColorPicker.jsx
   FillModeControls.jsx
   LegendSection.jsx
   CanvasToolbar.jsx
+  ColorizerCanvas.jsx
   PlateCanvas.jsx
   GelCanvas.jsx
   plateColorizerData.js
@@ -157,7 +159,7 @@ Should contain:
 
 ## Custom Hook Plan
 
-Create `src/hooks/usePlateColorizer.js`.
+Use `src/hooks/usePlateColorizer.js`.
 
 This hook should own the colorizer state and behavior:
 
@@ -241,14 +243,21 @@ git checkout master
 git branch -D feature/split-plate-colorizer
 ```
 
-## Near-Term Refactor Checklist
+## Completed Refactor Checklist
 
-- Move constants into `plateColorizerData.js`.
-- Move all state and handlers into `usePlateColorizer.js`.
-- Split toolbar, settings, color picker, legend, and canvas into separate components.
-- Keep `PlateColorizer.jsx` as the composition layer.
-- Run a build after Node is available.
-- Commit the refactor as one focused commit.
+- Constants moved into `plateColorizerData.js`.
+- State and handlers moved into `usePlateColorizer.js`.
+- Toolbar, settings, color picker, legend, and canvas split into separate components.
+- `PlateColorizer.jsx` kept as the composition layer.
+- Build verified after Node became available.
+- Refactor recorded as a focused Git commit.
+
+## Near-Term Product Checklist
+
+- Add a sample table that can connect samples to wells.
+- Add randomized well assignment.
+- Add export to JSON, CSV, or Excel.
+- Add save/load for reusable experiment templates.
 
 ## Long-Term Expansion Ideas
 
