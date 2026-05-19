@@ -323,6 +323,8 @@ Implemented:
 - Modular React/Vite app.
 - Plate colorizer component group.
 - Custom hook for plate colorizer state and logic.
+- JSON template engine prototype.
+- Component registry for `note`, `reaction_table`, and `plate_viewer`.
 - GitHub Pages deployment workflow.
 
 Not implemented yet:
@@ -330,8 +332,7 @@ Not implemented yet:
 - Project dashboard.
 - Calendar and kanban views.
 - ELN record page.
-- Reaction setup formula table.
-- Template engine and JSON renderer.
+- Advanced reaction setup formula table.
 - Data persistence layer.
 - Operation log service.
 - Animal experiment ledger.
