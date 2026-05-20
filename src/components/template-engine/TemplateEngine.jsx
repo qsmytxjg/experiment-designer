@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Layout, Save } from 'lucide-react';
+import { Code, Layout, Save, X } from 'lucide-react';
 import JsonEditor from './JsonEditor.jsx';
 import RenderedBlocks from './RenderedBlocks.jsx';
 import { INITIAL_TEMPLATE_BLOCKS, TEMPLATE_COMPONENT_TYPES } from './templateData.js';
@@ -25,6 +25,7 @@ export default function TemplateEngine() {
   const [blocks, setBlocks] = useState(INITIAL_TEMPLATE_BLOCKS);
   const [jsonText, setJsonText] = useState(formatJson(INITIAL_TEMPLATE_BLOCKS));
   const [error, setError] = useState(null);
+  const [showDeveloperPanel, setShowDeveloperPanel] = useState(false);
 
   function handleJsonTextChange(event) {
     const text = event.target.value;
@@ -83,10 +84,23 @@ export default function TemplateEngine() {
             <p>JSON Template to Component Renderer to Editable Experiment UI</p>
           </span>
         </div>
-        <button type="button" onClick={handleFormatJson}>
-          <Save size={18} />
-          Format / Validate
-        </button>
+        <div className="template-engine-actions">
+          {showDeveloperPanel && (
+            <button type="button" onClick={handleFormatJson}>
+              <Save size={18} />
+              Format / Validate
+            </button>
+          )}
+          <button
+            className={showDeveloperPanel ? 'active' : ''}
+            type="button"
+            onClick={() => setShowDeveloperPanel((current) => !current)}
+            title="开发者模式"
+          >
+            {showDeveloperPanel ? <X size={18} /> : <Code size={18} />}
+            {showDeveloperPanel ? 'Hide JSON' : 'Dev JSON'}
+          </button>
+        </div>
       </header>
 
       <div className="template-type-strip">
@@ -98,9 +112,11 @@ export default function TemplateEngine() {
         ))}
       </div>
 
-      <main className="template-engine-layout">
-        <JsonEditor error={error} jsonText={jsonText} onJsonTextChange={handleJsonTextChange} />
+      <main className={showDeveloperPanel ? 'template-engine-layout with-dev-panel' : 'template-engine-layout'}>
         <RenderedBlocks blocks={blocks} onBlockDataChange={handleBlockDataChange} />
+        {showDeveloperPanel && (
+          <JsonEditor error={error} jsonText={jsonText} onJsonTextChange={handleJsonTextChange} />
+        )}
       </main>
     </div>
   );

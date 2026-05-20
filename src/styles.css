@@ -867,6 +867,7 @@ dd {
 
 .template-engine-header button,
 .template-engine-brand,
+.template-engine-actions,
 .template-type-strip,
 .template-type-strip span,
 .json-editor-header span,
@@ -884,6 +885,18 @@ dd {
   background: #eef2ff;
   color: #3730a3;
   font-weight: 800;
+}
+
+.template-engine-actions {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.template-engine-actions button.active {
+  border-color: #4338ca;
+  background: #4338ca;
+  color: #ffffff;
 }
 
 .template-engine-brand {
@@ -934,11 +947,15 @@ dd {
 
 .template-engine-layout {
   display: grid;
-  grid-template-columns: minmax(320px, 0.42fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 16px;
   min-height: 0;
   height: calc(100vh - 112px);
   padding: 16px;
+}
+
+.template-engine-layout.with-dev-panel {
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.42fr);
 }
 
 .json-editor-panel,
@@ -1010,11 +1027,11 @@ dd {
 .rendered-blocks-panel {
   overflow-y: auto;
   background: #f8fafc;
-  padding: 28px;
+  padding: 34px;
 }
 
 .rendered-blocks-inner {
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 auto;
 }
 
