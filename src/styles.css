@@ -1248,6 +1248,338 @@ dd {
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.1);
 }
 
+.template-plate-card {
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 9px rgba(15, 23, 42, 0.05);
+}
+
+.template-plate-header,
+.template-plate-title,
+.template-plate-actions,
+.template-plate-toolbar,
+.template-plate-colors,
+.template-hex-input,
+.template-fill-mode,
+.template-tool-button,
+.template-plate-canvas-top,
+.template-zoom-controls,
+.template-plate-legend h3,
+.template-plate-legend label {
+  display: flex;
+  align-items: center;
+}
+
+.template-plate-header {
+  justify-content: space-between;
+  gap: 14px;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+  padding: 14px 16px;
+}
+
+.template-plate-title {
+  min-width: 0;
+  flex: 1;
+  gap: 10px;
+  color: #7c3aed;
+}
+
+.template-plate-title select {
+  max-width: 180px;
+  border-color: #ddd6fe;
+  color: #4c1d95;
+  font-weight: 700;
+}
+
+.template-plate-title input {
+  min-width: 180px;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  color: #334155;
+  font-size: 1.05rem;
+  font-weight: 800;
+  outline: 0;
+}
+
+.template-plate-title input:focus {
+  border-bottom-color: #a78bfa;
+}
+
+.template-plate-actions {
+  gap: 8px;
+}
+
+.template-plate-actions button,
+.template-tool-button {
+  gap: 7px;
+  min-height: 34px;
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.template-plate-actions .primary {
+  border-color: #7c3aed;
+  background: #7c3aed;
+  color: #ffffff;
+}
+
+.template-plate-toolbar {
+  flex-wrap: wrap;
+  gap: 10px;
+  border-bottom: 1px solid #f1f5f9;
+  padding: 12px 16px;
+}
+
+.template-plate-toolbar > select {
+  width: auto;
+  min-width: 160px;
+  background: #f8fafc;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.template-plate-colors {
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.template-plate-colors button {
+  width: 28px;
+  min-width: 28px;
+  height: 28px;
+  min-height: 28px;
+  border: 2px solid #e2e8f0;
+  border-radius: 50%;
+  padding: 0;
+}
+
+.template-plate-colors button.active {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.18);
+  transform: scale(1.08);
+}
+
+.template-native-color {
+  width: 38px;
+  height: 38px;
+  padding: 2px;
+}
+
+.template-hex-input {
+  gap: 6px;
+  width: 132px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #f8fafc;
+  padding: 0 8px;
+  color: #94a3b8;
+}
+
+.template-hex-input input {
+  border: 0;
+  background: transparent;
+  padding-inline: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.82rem;
+  outline: 0;
+}
+
+.template-fill-mode {
+  gap: 4px;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+  background: #f1f5f9;
+  padding: 4px;
+}
+
+.template-fill-mode button {
+  min-height: 30px;
+  border: 0;
+  background: transparent;
+  color: #64748b;
+  padding: 4px 8px;
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.template-fill-mode button.active {
+  background: #ffffff;
+  color: #6d28d9;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.1);
+}
+
+.template-tool-button.active {
+  border-color: #7c3aed;
+  background: #f5f3ff;
+  color: #6d28d9;
+}
+
+.template-tool-button.danger {
+  border-color: #fecdd3;
+  background: #fff1f2;
+  color: #be123c;
+}
+
+.template-plate-canvas {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f1f5f9;
+}
+
+.template-plate-canvas-top {
+  position: absolute;
+  z-index: 2;
+  top: 14px;
+  right: 14px;
+  left: 14px;
+  justify-content: space-between;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.template-plate-canvas-top span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #ddd6fe;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #6d28d9;
+  padding: 7px 10px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.08);
+}
+
+.template-zoom-controls {
+  gap: 4px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.96);
+  padding: 4px;
+  pointer-events: auto;
+}
+
+.template-zoom-controls button {
+  width: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  border: 0;
+  padding: 0;
+}
+
+.template-zoom-controls strong {
+  min-width: 46px;
+  text-align: center;
+  color: #475569;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.76rem;
+}
+
+.template-plate-scroll {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 56px 20px 20px;
+}
+
+.template-plate-frame {
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.15);
+  transition: width 180ms ease, height 180ms ease;
+}
+
+.template-plate-index,
+.template-plate-well {
+  cursor: pointer;
+}
+
+.template-plate-index {
+  fill: #334155;
+  font-family: sans-serif;
+  transition: fill 120ms ease;
+}
+
+.template-plate-index:hover {
+  fill: #7c3aed;
+  font-weight: 800;
+}
+
+.template-plate-well {
+  transition: opacity 120ms ease;
+}
+
+.template-plate-well:hover {
+  opacity: 0.82;
+}
+
+.template-plate-legend {
+  background: #f8fafc;
+  padding: 14px 16px;
+}
+
+.template-plate-legend h3 {
+  gap: 7px;
+  margin-bottom: 10px;
+  color: #475569;
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.template-plate-legend p {
+  width: fit-content;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #94a3b8;
+  padding: 9px 11px;
+  font-size: 0.8rem;
+}
+
+.template-plate-legend > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.template-plate-legend label {
+  grid-template-columns: none;
+  gap: 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 7px 9px;
+}
+
+.template-plate-legend span {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+}
+
+.template-plate-legend input {
+  width: 140px;
+  border: 0;
+  background: transparent;
+  padding: 2px 0;
+  font-size: 0.82rem;
+  outline: 0;
+}
+
 .unknown-template-block,
 .empty-template-state {
   border: 1px solid #fecdd3;

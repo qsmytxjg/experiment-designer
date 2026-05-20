@@ -20,17 +20,21 @@ export const INITIAL_TEMPLATE_BLOCKS = [
   },
   {
     id: 'block-3',
-    type: 'plate_viewer',
+    type: 'plate_colorizer',
     data: {
       title: '加药孔板设计',
-      format: '96-well',
-      wells: {
+      formatId: '96-well',
+      colors: {
         A1: '#ef4444',
         A2: '#ef4444',
         A3: '#ef4444',
         B1: '#3b82f6',
         B2: '#3b82f6',
         B3: '#3b82f6',
+      },
+      legends: {
+        '#ef4444': 'Drug A',
+        '#3b82f6': 'Control',
       },
     },
   },
@@ -39,5 +43,6 @@ export const INITIAL_TEMPLATE_BLOCKS = [
 export const TEMPLATE_COMPONENT_TYPES = [
   { type: 'note', label: '备注文本' },
   { type: 'reaction_table', label: '体系配置表' },
+  { type: 'plate_colorizer', label: '交互布板' },
   { type: 'plate_viewer', label: '布板预览' },
 ];
