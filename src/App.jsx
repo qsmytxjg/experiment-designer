@@ -1,17 +1,9 @@
-import { lazy, Suspense, useState } from 'react';
 import PlateColorizer from './components/plate-colorizer/PlateColorizer.jsx';
-
-const TemplateEngineDevTool = import.meta.env.DEV
-  ? lazy(() => import('./components/template-engine/TemplateEngine.jsx'))
-  : null;
+import TemplateEngine from './components/template-engine/TemplateEngine.jsx';
+import { useState } from 'react';
 
 export default function App() {
-  const [activeModule, setActiveModule] = useState('plate');
-  const showTemplateEngineDevTool = import.meta.env.DEV;
-
-  if (!showTemplateEngineDevTool) {
-    return <PlateColorizer />;
-  }
+  const [activeModule, setActiveModule] = useState('template');
 
   return (
     <>
@@ -28,16 +20,10 @@ export default function App() {
           type="button"
           onClick={() => setActiveModule('template')}
         >
-          JSON 模板引擎
+          实验记录本
         </button>
       </nav>
-      {activeModule === 'plate' ? (
-        <PlateColorizer />
-      ) : (
-        <Suspense fallback={<div className="dev-tool-loading">Loading template engine...</div>}>
-          <TemplateEngineDevTool />
-        </Suspense>
-      )}
+      {activeModule === 'plate' ? <PlateColorizer /> : <TemplateEngine />}
     </>
   );
 }

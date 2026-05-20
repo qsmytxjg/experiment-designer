@@ -22,6 +22,7 @@ function validateBlocks(value) {
 }
 
 export default function TemplateEngine() {
+  const canUseDeveloperPanel = import.meta.env.DEV;
   const [blocks, setBlocks] = useState(INITIAL_TEMPLATE_BLOCKS);
   const [jsonText, setJsonText] = useState(formatJson(INITIAL_TEMPLATE_BLOCKS));
   const [error, setError] = useState(null);
@@ -80,41 +81,47 @@ export default function TemplateEngine() {
             <Layout size={24} />
           </div>
           <span>
-            <h1>实验模板渲染底座</h1>
-            <p>JSON Template to Component Renderer to Editable Experiment UI</p>
+            <h1>电子实验记录本</h1>
+            <p>用备注、体系表、PCR 条件和布板模块搭建实验设计流程</p>
           </span>
         </div>
         <div className="template-engine-actions">
-          {showDeveloperPanel && (
+          {canUseDeveloperPanel && showDeveloperPanel && (
             <button type="button" onClick={handleFormatJson}>
               <Save size={18} />
               Format / Validate
             </button>
           )}
-          <button
-            className={showDeveloperPanel ? 'active' : ''}
-            type="button"
-            onClick={() => setShowDeveloperPanel((current) => !current)}
-            title="开发者模式"
-          >
-            {showDeveloperPanel ? <X size={18} /> : <Code size={18} />}
-            {showDeveloperPanel ? 'Hide JSON' : 'Dev JSON'}
-          </button>
+          {canUseDeveloperPanel && (
+            <button
+              className={showDeveloperPanel ? 'active' : ''}
+              type="button"
+              onClick={() => setShowDeveloperPanel((current) => !current)}
+              title="开发者模式"
+            >
+              {showDeveloperPanel ? <X size={18} /> : <Code size={18} />}
+              {showDeveloperPanel ? 'Hide JSON' : 'Dev JSON'}
+            </button>
+          )}
         </div>
       </header>
 
       <div className="template-type-strip">
         {TEMPLATE_COMPONENT_TYPES.map((item) => (
           <span key={item.type}>
-            <strong>{item.type}</strong>
+            {canUseDeveloperPanel && showDeveloperPanel && <strong>{item.type}</strong>}
             {item.label}
           </span>
         ))}
       </div>
 
       <main className={showDeveloperPanel ? 'template-engine-layout with-dev-panel' : 'template-engine-layout'}>
-        <RenderedBlocks blocks={blocks} onBlockDataChange={handleBlockDataChange} />
-        {showDeveloperPanel && (
+        <RenderedBlocks
+          blocks={blocks}
+          onBlockDataChange={handleBlockDataChange}
+          showInternalLabels={canUseDeveloperPanel && showDeveloperPanel}
+        />
+        {canUseDeveloperPanel && showDeveloperPanel && (
           <JsonEditor error={error} jsonText={jsonText} onJsonTextChange={handleJsonTextChange} />
         )}
       </main>

@@ -1,7 +1,7 @@
 import { AlertCircle } from 'lucide-react';
 import { COMPONENT_REGISTRY } from './componentRegistry.js';
 
-export default function RenderedBlocks({ blocks, onBlockDataChange }) {
+export default function RenderedBlocks({ blocks, onBlockDataChange, showInternalLabels = false }) {
   return (
     <section className="rendered-blocks-panel">
       <div className="rendered-blocks-inner">
@@ -21,7 +21,7 @@ export default function RenderedBlocks({ blocks, onBlockDataChange }) {
 
           return (
             <div className="rendered-block-shell" key={block.id}>
-              <div className="block-type-badge">{block.type}</div>
+              {showInternalLabels && <div className="block-type-badge">{block.type}</div>}
               <TargetComponent
                 data={block.data || {}}
                 onChange={(newData) => onBlockDataChange(block.id, newData)}
