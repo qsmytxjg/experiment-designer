@@ -323,7 +323,7 @@ Implemented:
 - Modular React/Vite app.
 - Plate colorizer component group.
 - Custom hook for plate colorizer state and logic.
-- JSON template engine prototype.
+- JSON template engine prototype as a development-only renderer.
 - Component registry for `note`, `reaction_table`, and `plate_viewer`.
 - GitHub Pages deployment workflow.
 

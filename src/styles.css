@@ -837,6 +837,15 @@ dd {
   color: #ffffff;
 }
 
+.dev-tool-loading {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 800;
+}
+
 .template-engine-app {
   display: flex;
   min-height: 100vh;
